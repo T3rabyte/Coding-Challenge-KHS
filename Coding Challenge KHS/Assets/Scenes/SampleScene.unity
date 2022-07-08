@@ -902,6 +902,7 @@ MonoBehaviour:
   - {fileID: 2594215596542198048, guid: 622b21b047d700049acff74dbcc778df, type: 3}
   - {fileID: 8558341173848547992, guid: 42e285a89ba6ac74781b9287c73bfb69, type: 3}
   - {fileID: 1503939996236484116, guid: 7d9706d7ce598634cab72f09b23d3231, type: 3}
+  - {fileID: 3094764481646448496, guid: 7ba1ad009a121fc4496d9b3f6ecb23a4, type: 3}
   handOne: {fileID: 1267703778}
   handTwo: {fileID: 19257803}
   head: {fileID: 48337764}

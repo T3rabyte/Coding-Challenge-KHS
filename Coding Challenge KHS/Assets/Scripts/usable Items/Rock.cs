@@ -6,6 +6,9 @@ public class Rock : MonoBehaviour
 {
     public Rigidbody rBody;
 
+    /// <summary>
+    /// throws the rock
+    /// </summary>
     public void Throw() 
     {
         gameObject.transform.parent = null;

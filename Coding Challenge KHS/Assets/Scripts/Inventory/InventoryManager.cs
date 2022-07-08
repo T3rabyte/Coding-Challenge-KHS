@@ -55,20 +55,30 @@ public class InventoryManager : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Adjusts the players inventory index from the argument.
+    /// </summary>
+    /// <param name="adjusment"></param>
     public void adjustInventoryIndex(int adjusment) 
     {
-        if (inventoryIndex + adjusment <= inventory.Count -1 && adjusment > 0) // If the new amount will be lower then the amount of items in the inventory and higher then the index we let the index go higher.
+        if (inventoryIndex + adjusment <= inventory.Count -1 && adjusment > 0) // If the new amount will be lower or the same then the amount of items in the inventory, and the adjustment is higher then 0, we let the index go higher.
         {
             inventoryIndex += adjusment;
         }
-        else if (inventoryIndex + adjusment >= 0 && adjusment < 0 )
+        else if (inventoryIndex + adjusment >= 0 && adjusment < 0 ) // If the new amount is higher or the same as 0 and the adjustment amount is lower then 0, we let the index go lower.
         {
             inventoryIndex += adjusment;
         }
     }
 
-    public void DeleteItemFromInventory(string objName) 
+    /// <summary>
+    /// deletes the specified amount of items form the int argument depending on the name given.
+    /// </summary>
+    /// <param name="objName"></param>
+    /// <param name="amountToDelete"></param>
+    public void DeleteItemFromInventory(string objName, int amountToDelete) 
     {
+        int amountDeleted = 0;
         int j = inventory.Count;
         for (int i = 0; i < j; i++)
         {
@@ -77,8 +87,9 @@ public class InventoryManager : MonoBehaviour
                 inventory[i].SetActive(false);
                 inventory.RemoveAt(i);
                 inventoryIndex--;
+                amountDeleted++;
                 j = inventory.Count;
-                if (i == j)
+                if (i == j || amountDeleted == amountToDelete)
                 {
                     break;
                 }

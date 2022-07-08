@@ -10,6 +10,9 @@ public class Gun : MonoBehaviour
 
     public int bulletsInGun;
 
+    /// <summary>
+    /// shoots a bullet from the gun if it has at least 1 bullet in it.
+    /// </summary>
     public void Shoot() 
     {
         if (bulletsInGun > 0) 
@@ -21,6 +24,9 @@ public class Gun : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// adds 6 bullets to the gun if its empty
+    /// </summary>
     public void AddAmmoClip() 
     {
         if (bulletsInGun == 0) 

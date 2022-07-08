@@ -11,6 +11,9 @@ public class Flashlight : MonoBehaviour
         light.gameObject.SetActive(false);
     }
 
+    /// <summary>
+    /// turns the flashlight on if of or vice versa.
+    /// </summary>
     public void useObject() 
     {
         if (light.gameObject.activeSelf) 
