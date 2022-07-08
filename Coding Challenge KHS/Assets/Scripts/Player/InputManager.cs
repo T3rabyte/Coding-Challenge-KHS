@@ -29,7 +29,7 @@ public class InputManager : MonoBehaviour
                         break;
 
                     case "Rock":
-                        inventoryManager.DeleteItemFromInventory("Rock");
+                        inventoryManager.DeleteItemFromInventory("Rock", 1);
                         inventoryManager.handOne.transform.GetChild(0).gameObject.GetComponent<Rock>().Throw();
                         break;
 
@@ -45,7 +45,7 @@ public class InputManager : MonoBehaviour
                     case "Ammo Clip":
                         if (inventoryManager.handTwo.transform.GetChild(0).gameObject.name.Replace("(Clone)", "") == "Gun" && inventoryManager.handTwo.transform.GetChild(0).gameObject.GetComponent<Gun>().bulletsInGun == 0) 
                         {
-                            inventoryManager.DeleteItemFromInventory("AmmoClip");
+                            inventoryManager.DeleteItemFromInventory("AmmoClip", 1);
                             Destroy(inventoryManager.handOne.transform.GetChild(0).gameObject);
                             inventoryManager.handTwo.transform.GetChild(0).gameObject.GetComponent<Gun>().AddAmmoClip();
                         }
@@ -70,7 +70,7 @@ public class InputManager : MonoBehaviour
                         break;
 
                     case "Rock":
-                        inventoryManager.DeleteItemFromInventory("Rock");
+                        inventoryManager.DeleteItemFromInventory("Rock", 1);
                         inventoryManager.handTwo.transform.GetChild(0).gameObject.GetComponent<Rock>().Throw();
                         break;
 
@@ -86,7 +86,7 @@ public class InputManager : MonoBehaviour
                     case "Ammo Clip":
                         if (inventoryManager.handOne.transform.GetChild(0).gameObject.name.Replace("(Clone)", "") == "Gun" && inventoryManager.handOne.transform.GetChild(0).gameObject.GetComponent<Gun>().bulletsInGun == 0)
                         {
-                            inventoryManager.DeleteItemFromInventory("AmmoClip");
+                            inventoryManager.DeleteItemFromInventory("AmmoClip", 1);
                             Destroy(inventoryManager.handTwo.transform.GetChild(0).gameObject);
                             inventoryManager.handOne.transform.GetChild(0).gameObject.GetComponent<Gun>().AddAmmoClip();
                         }
