@@ -5,23 +5,28 @@ public class InventoryManager : MonoBehaviour
 {
     public List<GameObject> inventory = new List<GameObject>();
 
-    [SerializeField]
-    private GameObject handOne;
-    [SerializeField]
-    private GameObject handTwo;
+    public GameObject handOne;
+    public GameObject handTwo;
+
+    public GameObject head;
 
     private int handOneCurrentObj = 0;
     private int handTwoCurrentObj = 0;
 
     public int inventoryIndex = 0;
 
-    public int targetFrameRate = 30;
+    public int targetFrameRate = 60;
 
     private void Start()
     {
-        // sets the framerate to 30 and turns vSync off to prevent extreme GPU usage
+        // sets the framerate to 60 and turns vSync off to prevent extreme GPU usage
         QualitySettings.vSyncCount = 0;
         Application.targetFrameRate = targetFrameRate;
+
+        foreach (GameObject obj in inventory) 
+        {
+            obj.SetActive(false);
+        }
     }
 
     void Update()
@@ -30,7 +35,7 @@ public class InventoryManager : MonoBehaviour
         {
             inventory[inventoryIndex].gameObject.SetActive(true);
             handOneCurrentObj = inventoryIndex;
-            Instantiate(inventory[inventoryIndex], handOne.transform.position, Quaternion.identity, handOne.transform);
+            Instantiate(inventory[inventoryIndex], handOne.transform.position, new Quaternion(0,0,0,0), handOne.transform);
         }
         else if (Input.GetKeyDown(KeyCode.E) && handOne.transform.childCount == 1) 
         {
@@ -41,7 +46,7 @@ public class InventoryManager : MonoBehaviour
         {
             inventory[inventoryIndex].gameObject.SetActive(true);
             handTwoCurrentObj = inventoryIndex;
-            Instantiate(inventory[inventoryIndex], handTwo.transform.position, Quaternion.identity, handTwo.transform);
+            Instantiate(inventory[inventoryIndex], handTwo.transform.position, new Quaternion(0, 0, 0, 0), handTwo.transform);
         }
         else if (Input.GetKeyDown(KeyCode.Q) && handTwo.transform.childCount == 1) 
         {
@@ -59,6 +64,25 @@ public class InventoryManager : MonoBehaviour
         else if (inventoryIndex + adjusment >= 0 && adjusment < 0 )
         {
             inventoryIndex += adjusment;
+        }
+    }
+
+    public void DeleteItemFromInventory(string objName) 
+    {
+        int j = inventory.Count;
+        for (int i = 0; i < j; i++)
+        {
+            if (inventory[i].name == objName)
+            {
+                inventory[i].SetActive(false);
+                inventory.RemoveAt(i);
+                inventoryIndex--;
+                j = inventory.Count;
+                if (i == j)
+                {
+                    break;
+                }
+            }
         }
     }
 }
